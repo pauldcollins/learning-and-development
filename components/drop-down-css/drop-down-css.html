@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .drop-down-fade {
+            width: 200px;
+            position: relative;
+            background: lightgrey;
+            border: solid 1px black;
+            border-radius: 5px;
+            padding: 10px;
+            float: left;
+        }
+
+        .drop-down-fade h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .drop-down-fade ul {
+            list-style: none;
+            margin: 0;
+            padding: 5px;
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s linear;            
+        }
+
+        .drop-down-fade ul a {
+            color: black;
+            text-decoration: underline;            
+        }
+
+        .drop-down-fade:hover ul {            
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+        }        
+    </style>
+
+    <style>
+        .drop-down-slide {
+            width: 200px;
+            float: left;
+            position: relative;
+            background: lightgrey;
+            border: solid 1px black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        .drop-down-slide h2 {
+            margin: 5px 0;
+            padding: 0;
+        }
+
+        .drop-down-slide ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 5px 0 5px;      
+            overflow-y: hidden;
+            max-height: 0;
+            transition-property: max-height;
+            transition-duration: .5s;
+            transition-timing-function: cubic-bezier(0, 1, 0.5, 1);                
+        }
+
+        .drop-down-slide ul a {
+            color: black;
+            text-decoration: underline;            
+        }
+
+        .drop-down-slide:hover ul {            
+            max-height: 500px; /* approximate max height */        
+        }        
+    </style>    
+</head>
+<body>
+
+<!--DROP DOWN FADE-->
+    <nav class="drop-down-fade">
+        <h2>Drop Down Fade</h2>
+        <ul>
+            <li><a href="/">Item 1</a></li>
+            <li><a href="/">Item 2</a></li>
+            <li><a href="/">Item 3</a></li>
+        </ul>
+    </nav>
+
+<!--DROP DOWN SLIDE-->
+    <nav class="drop-down-slide">
+        <h2>Drop Down Slide</h2>
+        <ul>
+            <li><a href="/">Item 1</a></li>
+            <li><a href="/">Item 2</a></li>
+            <li><a href="/">Item 3</a></li>
+        </ul>
+    </nav>    
+
+</body>
+</html>

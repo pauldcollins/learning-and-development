@@ -1,0 +1,50 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.loader { 
+   text-align: center;
+}
+
+/* wrapper */
+#wrapper, html, body {
+  height:100%;
+  margin:0;
+  font-size: 18px;
+}
+
+/* CSS */
+.slideshow {
+  /* Hidden initially, revealed with JS once data is loaded */
+  display: none;
+  width: 500px;
+  margin: 0 auto;  
+  padding: 10px;
+  border: solid 1px #000;
+  overflow: auto;
+  position: relative;
+  padding: 10px;
+}
+
+.slideshow img {
+  width: 100%;
+  position: relative;
+} 
+
+.slideshow figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 20px); /* width 100% - margins */
+  margin: 10px;
+}
+
+.slideshow figure:first-child {
+  position: relative;
+}
+
+.slideshow figure img {
+  width: 100%;
+  cursor: pointer;
+}

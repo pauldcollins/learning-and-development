@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .alert-window {
+            display: none;                                
+        }
+        .sr-only {
+            position: absolute;
+            top: -10000px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero-banner">
+    <h1 class="heading" aria-busy="true">Alert window test</h1>  
+    <div class="alert-window" aria-role="progressbar" aria-describedby="loading" aria-atomic="false">
+        <div class="sr-only" id="loading" aria-atomic="false">Loading screen reader</div>
+        <div aria-hidden="true">Loading visible</div>
+    </div>
+</div>
+
+
+<script>
+    let alert = document.querySelector('.alert-window');
+    let heading = document.querySelector('.heading');
+
+    var showingLoading = () => {
+       alert.style.display = 'block';
+       heading.setAttribute('aria-busy', 'true');  
+       setTimeout(hideLoading, 2000);    
+    }
+
+    var hideLoading = () => {
+       alert.style.display = 'none';
+       heading.setAttribute('aria-busy', 'false');    
+       setTimeout(showingLoading, 2000);   
+    }
+
+    setTimeout(showingLoading, 2000);
+</script>
+
+</body>
+</html>

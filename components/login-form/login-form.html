@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .login-window {
+            width: 300px;
+            margin: 0 auto;
+            border: solid 1px grey;   
+        }
+
+        .login-window fieldset {
+            border: 0;
+        }
+
+        .login-window legend {
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-window input {
+            border: solid 1px grey;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-window">
+    <form action="">
+        <fieldset>
+            <legend>Login form</legend>
+            <input required class="input-email" type="email" value="">
+            <input required class="input-password" type="password" value="">
+            <button class="button-login" type="submit">Login</button>
+        </fieldset>
+    </form>
+</div>
+<script>
+
+    // You need a UI object (get DOM Elements, add spinner, etc)
+    const LoginForm = {
+
+        // on submit click, grab the dom elements
+        init: function() {
+            this.$form = document.querySelector('form');
+            this.$form.addEventListener('submit', this.onSubmit);
+        },
+        
+        // pass their values to the Auth
+        onSubmit: function(e) {
+            e.preventDefault(); // Stop form submitting
+            
+            const email = document.querySelector('.input-email');
+            const password = document.querySelector('.input-password');
+
+            Auth.process(email, password, function(result) {
+                if (result) {
+                    console.log('You are logged in');
+                } else {
+                    console.log('Your email or password was not correct');
+                }
+            });
+        }
+    }
+
+    // You need a data object
+    const Auth = {    
+        // take data, create object for server
+        
+        // submit data to server via ajax
+        
+        // How to simulate, an async action
+        process: function(email, password, authCallback) {
+
+            const data = {
+                email: email.value,
+                password: password.value
+            }            
+
+            // // Simulate two second response
+            setTimeout(function() {
+                // Hardcode the simulated auth request to true (positive)
+                // Pass false to simulate unsuccessful attempt
+                authCallback(false);
+            }, 2000);          
+        }
+    }
+
+    LoginForm.init();
+
+</script>
+
+</body>
+</html>

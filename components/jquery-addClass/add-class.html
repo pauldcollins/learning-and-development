@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<button id="login-button">Login</button>
+
+<script>
+// `element` can either be an ID (string), or, it can be a DOMElement Object.
+// `className` is a string
+function addClass(element, className) {
+  
+  if (!!element || !!className) {
+    return false;
+  }
+  
+  // Add className validation...
+  if (typeof className !== 'string') {
+    return false;
+  }
+  
+  // check if element is a string or a dom element 
+  if (typeof element !== 'string' || element.nodeType === 1) {
+    return false;
+  }
+  
+  let elementNode;
+  
+  if (typeof element === 'string') {
+    elementNode = document.getElementById(element);
+  } else {
+    elementNode = element;
+  }
+  
+  // Check if class doesn't exist already
+  let elementNodeSplit = elementNode.className.split(' ');
+  if (elementNodeSplit.indexOf(className) === -1) {
+    elementNode.className = elementNode.className + ' ' + className;
+  }
+}
+
+// Setup test environment
+var button = document.getElementById('login-button');
+button.classList.add('button', 'login', 'active');
+
+// Test 1
+addClass('login-button', 'active');
+console.assert(button.classList.length === 3); // One way of testing
+
+
+addClass('login-button');
+console.assert(button.classList.length === 3); // One way of testing
+// Test 2
+// var loginButton = document.getElementById('login-button');
+// addClass(loginButton, 'active');
+
+</script>
+
+</body>
+</html>
