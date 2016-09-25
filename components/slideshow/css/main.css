@@ -25,6 +25,7 @@
   overflow: auto;
   position: relative;
   padding: 10px;
+  min-height: 300px;
 }
 
 .slideshow img {
@@ -38,6 +39,7 @@
   left: 0;
   width: calc(100% - 20px); /* width 100% - margins */
   margin: 10px;
+  animation: fadein 2s;
 }
 
 .slideshow figure:first-child {
@@ -47,4 +49,9 @@
 .slideshow figure img {
   width: 100%;
   cursor: pointer;
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

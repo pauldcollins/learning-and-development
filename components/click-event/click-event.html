@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+</head>
+<body>
+	<button id="btn-0">Button 1!</button>
+	<button id="btn-1">Button 2!</button>
+	<button id="btn-2">Button 3!</button>
+
+	<script>
+		let prizes = ['A Unicorn!', 'A Hug!', 'Fresh Laundry!'];
+
+		// ORIGINAL
+	 	// for (var btnNum = 0; btnNum < prizes.length; btnNum++) {
+	  //       // for each of our buttons, when the user clicks it...
+	  //       document.getElementById('btn-' + btnNum).onclick = function(frozenBtnNum){
+	  //           return function() {
+	  //               // tell her what she's won!
+	  //               alert(prizes[frozenBtnNum]);
+	  //           };
+	  //       }(btnNum);
+	  //   }		
+
+	  // ES6
+		// let buttons = document.querySelectorAll('button');
+
+		// buttons.forEach(button => {
+		// 	button.addEventListener('click', function(event) {				
+		//     	let numberClicked = this.id.substr(-1);		    	
+		//     	console.log(prizes[numberClicked]);
+		//   	});
+		// });
+
+		// EVENT DELEGATION
+		document.querySelector('body').addEventListener('click', function(element) {
+			let numberClicked = element.target.id.split('-').pop();
+			console.log(prizes[numberClicked]);
+		});	
+	</script>	
+</body>
+</html>

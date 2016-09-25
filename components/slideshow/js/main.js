@@ -30,41 +30,46 @@
 
     let slideshow = {
         data: null,
-        $image: null, 
-        $slideshowList: null,
+        $image: null,
+        $slideshow: null,
 
-        init: function () {
-            this.$slideshow = document.querySelector('.slideshow');    
-            this.$loader = document.querySelector('.loader');        
-            this.setup();
-        },
-
-        getData: function () {
+        // get data
+        getData: function() {
             this.data = images;
         },
 
-        setup: function () {
+        // initialise
+        init: function() {
+            this.$slideshow = document.querySelector('.slideshow');
+            this.$loader = document.getElementById('loader');
+            this.setup();
+        },
+
+        // setup
+        setup: function() {
             this.getData();
-            this.renderSlideshow();
+            this.renderSlides();
 
             if (this.data) {
                 this.$slideshow.style.display = 'block';
                 this.$loader.style.display = 'none';
+                this.animateSlides();
             }
-
         },
 
+        // thumbnail template
         thumbnailTemplate: function(src, alt, title, description) {
-            return `
-                <img src="${src}" alt="${alt}" />
-                <figcaption>
-                    <h2>${title}</h2>
-                    <p>${description}</p>
-                </figcaption>    
-                `;   
-        }, 
+          return `
+            <img src="${src}" alt="${alt}" />
+            <figcaption>
+                <h2>${title}</h2>
+                <p>${description}</p>
+            </figcaption>
+          `;
+        },
 
-        renderSlideshow: function () {
+        // renderSlides
+        renderSlides: function() {
             this.$slideshow.innerHTML = '';
             let $fragment = document.createDocumentFragment();
             let images = this.data;
@@ -76,8 +81,37 @@
             });
 
             this.$slideshow.appendChild($fragment);
+        },
+
+        // animate slides
+        animateSlides: function() {
+            let slideshow = this.$slideshow;
+            let $childNodes = this.$slideshow.childNodes;
+            let itemIndexToShow = 0;
+
+            slideshow.style.height = '600';
+
+            // hide all except first item
+            $childNodes.forEach((item, index) => {
+                if (index !== 0) {
+                    item.style.display = 'none';
+                }
+            });
+
+            // show images in intervals
+            setInterval(function() {
+                $childNodes[itemIndexToShow].style.display = 'none';
+                itemIndexToShow ++;
+
+                if (itemIndexToShow >= $childNodes.length -1) {
+                    itemIndexToShow = 0;
+                }
+                $childNodes[itemIndexToShow].style.display = 'block';
+                const heightOfElement = $childNodes[itemIndexToShow].offsetHeight + 40;
+                slideshow.style.height = heightOfElement + 'px';
+            }, 5000);
         }
-    }
+    };
 
     window.slideshow = slideshow;
 
