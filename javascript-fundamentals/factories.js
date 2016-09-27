@@ -1,9 +1,7 @@
-/**
- * Because people think that `new` is too hard for Devs to remember.
- * Also, because Devs hate inconsistency, so instead of wondering if a type (e.g. Person) needs `new` or not, they say,
- * "Use factories for everything, that way, you'll never be caught out".
- *
- * They just want to work with objects, and extending objects.
+/** PROS (or CONS??) OF FACTORIES
+ * Because Devs might not remember to use `new`
+ * There's  inconsistency: if adding classes you sometimes need to use 'new' and sometimes not
+ * Factories are just objects, and extending objects.
  *
  * Enter factories.
  */
